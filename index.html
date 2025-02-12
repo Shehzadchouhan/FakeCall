@@ -16,15 +16,20 @@
         <input type="text" id="caller-name" placeholder="Enter caller name">
         <!-- Fake Call Screen (Hidden by Default) -->
         <div id="fake-call-screen" style="display: none;">
-            <h2 id="fake-caller-name">Unknown</h2> <!-- ✅ Add this missing element -->
+            <h2 id="fake-caller-name">Unknown</h2> 
+            <img id="fake-caller-image" src="" alt="Caller Image" width="100"> 
+            <!-- Add this line -->
+            <!-- ✅ Add this missing element -->
             <button id="accept-call">Accept</button>
-            <button id="decline-call">Decline</button>
+            <button id="reject-call">Reject</button>
         </div>
+
+
 
         <label for="caller-image">Caller Image:</label>
         <input type="file" id="caller-image" accept="image/*">
         <img id="caller-image-preview" src="" alt="Caller Image Preview" width="100">
-        
+
         <label for="ringtone">Ringtone:</label>
         <input type="file" id="ringtone" accept="audio/*">
 
