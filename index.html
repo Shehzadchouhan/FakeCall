@@ -1,30 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FakeCall - Excuse Incoming Call</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+
     <h1>FakeCall - Set Up Your Excuse Call</h1>
+    
+    <nav>
+        <ul>
+            <li type="none">
+                <button id="dark-mode-toggle">🌙 Dark Mode</button>
+            </li>
+        </ul>
+    </nav>
 
     <div id="setup-container">
         <label for="caller-name">Caller Name:</label>
         <input type="text" id="caller-name" placeholder="Enter caller name">
-        <!-- Fake Call Screen (Hidden by Default) -->
-        <div id="fake-call-screen" style="display: none;">
-            <h2 id="fake-caller-name">Unknown</h2> 
-            <img id="fake-caller-image" src="" alt="Caller Image" width="100"> 
-            <!-- Add this line -->
-            <!-- ✅ Add this missing element -->
-            <button id="accept-call">Accept</button>
-            <button id="reject-call">Reject</button>
-        </div>
-
-
 
         <label for="caller-image">Caller Image:</label>
         <input type="file" id="caller-image" accept="image/*">
@@ -39,10 +35,16 @@
         <button id="schedule-call">Schedule Call</button>
     </div>
 
+    <!-- Fake Call Screen (Hidden by Default) -->
+    <div id="fake-call-screen" style="display: none;">
+        <h2 id="fake-caller-name">Unknown</h2> 
+        <img id="fake-caller-image" src="" alt="Caller Image" width="100">
+        <button id="accept-call">Accept</button>
+        <button id="reject-call">Reject</button>
+    </div>
+
     <audio id="fake-ringtone" preload="auto"></audio>
 
-    <!-- Move script here -->
     <script src="script.js"></script>
 </body>
-
 </html>

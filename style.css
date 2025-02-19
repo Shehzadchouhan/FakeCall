@@ -2,11 +2,30 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 20px;
+    background-color: #ffffff;
+    color: #000000;
+    transition: background 0.3s, color 0.3s;
 }
 
+/* Dark Mode */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
 
+/* Toggle Button */
+#dark-mode-toggle {
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Fake Call Screen */
 #fake-call-screen {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -19,18 +38,15 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
+
 #fake-caller-image {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     margin-bottom: 10px;
 }
-.caller-info img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-}
 
+/* Call Buttons */
 .call-buttons {
     margin-top: 20px;
 }
@@ -53,4 +69,4 @@ body {
 .decline {
     background: red;
     color: white;
-} 
+}
