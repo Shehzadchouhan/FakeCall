@@ -13,34 +13,53 @@
     <nav>
         <ul>
             <li type="none">
-                <button id="dark-mode-toggle">🌙 Dark Mode</button>
+                <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">🌙 Dark Mode</button>
             </li>
         </ul>
     </nav>
 
+
+    <div class="container">
+        <div class="avatar">👤</div>
+        <h2>Call Assistant</h2>
+        <label type="text" placeholder="Name">
+        <label type="tel" placeholder="Phone Number">
+        <button class="button">Continue</button>
+    </div>
+    <div class="nav">
+        <a href="#">📞 Call</a>
+        <a href="#">📅 Schedule</a>
+        <a href="#">⚙ Settings</a>
+    </div>
+
     <div id="setup-container">
-        <label for="caller-name">Caller Name:</label>
-        <input type="text" id="caller-name" placeholder="Enter caller name">
+     
+        <label for="caller-number">Caller Number:</label>
+        <input type="text" id="caller-number" placeholder="Enter phone number">
 
         <label for="caller-image">Caller Image:</label>
         <input type="file" id="caller-image" accept="image/*">
-        <img id="caller-image-preview" src="" alt="Caller Image Preview" width="100">
+        <img id="caller-image-preview" src="default-avatar.png" alt="Caller Image Preview" width="100">
 
         <label for="ringtone">Ringtone:</label>
         <input type="file" id="ringtone" accept="audio/*">
 
         <label for="call-time">Call in (seconds):</label>
-        <input type="number" id="call-time" placeholder="Enter here..." min="1">
+        <input type="number" id="call-time" placeholder="Enter time..." min="1">
 
         <button id="schedule-call">Schedule Call</button>
     </div>
 
     <!-- Fake Call Screen (Hidden by Default) -->
     <div id="fake-call-screen" style="display: none;">
+        <img id="fake-caller-image" src="default-avatar.png" alt="Caller Image" width="100">
         <h2 id="fake-caller-name">Unknown</h2> 
-        <img id="fake-caller-image" src="" alt="Caller Image" width="100">
-        <button id="accept-call">Accept</button>
-        <button id="reject-call">Reject</button>
+        <p id="fake-caller-number">+0000000000</p> 
+
+        <div class="call-buttons">
+            <button id="accept-call" class="accept" aria-label="Accept Call">📞 Accept</button>
+            <button id="reject-call" class="decline" aria-label="Reject Call">❌ Reject</button>
+        </div>
     </div>
 
     <audio id="fake-ringtone" preload="auto"></audio>

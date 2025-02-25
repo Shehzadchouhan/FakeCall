@@ -28,44 +28,60 @@ document.addEventListener("DOMContentLoaded", function () {
     let callTimerInterval;
 
     function scheduleFakeCall() {
-        const callerName = document.getElementById("caller-name").value || "Unknown";
+        const callerName = document.getElementById("caller-name").value.trim() || "Unknown";
         const callTime = parseInt(document.getElementById("call-time").value) * 1000 || 5000;
-    
-        document.getElementById("fake-caller-name").innerText = callerName;
-    
-        if (selectedImage) {
-            document.getElementById("fake-caller-image").src = selectedImage;
-        } else {
-            document.getElementById("fake-caller-image").src = "";
-        }
-    
-        setTimeout(() => {
-            document.getElementById("fake-call-screen").style.display = "block";
 
-            const audio = document.getElementById("fake-ringtone");
-            if (audio && audio.src) {
-                audio.play();
+        document.getElementById("fake-caller-name").innerText = callerName;
+        document.getElementById("fake-caller-image").src = selectedImage || "default-avatar.png"; // Default image if none selected
+        
+        setTimeout(() => {
+            const fakeCallScreen = document.getElementById("fake-call-screen");
+            fakeCallScreen.classList.add("active");
+
+            // Play ringtone
+            const ringtone = document.getElementById("fake-ringtone");
+            if (ringtone) {
+                ringtone.play().catch(error => console.error("Auto-play failed:", error));
             }
         }, callTime);
     }
 
     function acceptFakeCall() {
-        let timer = 0; 
+        let timer = 0;
         const timerElement = document.getElementById("fake-caller-name");
-        timerElement.innerText = "Call Started...";
+        timerElement.innerText = "00:00"; // Reset timer
+
+        // Hide call buttons
+        document.getElementById("accept-call").style.display = "none";
+        document.getElementById("reject-call").style.display = "none";
+
+        // Stop ringtone
+        const ringtone = document.getElementById("fake-ringtone");
+        if (ringtone && !ringtone.paused) {
+            ringtone.pause();
+            ringtone.currentTime = 0;
+        }
 
         callTimerInterval = setInterval(() => {
             timer++;
-            let minutes = Math.floor(timer / 60);
-            let seconds = timer % 60;
-            timerElement.innerText = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+            let minutes = Math.floor(timer / 60).toString().padStart(2, "0");
+            let seconds = (timer % 60).toString().padStart(2, "0");
+            timerElement.innerText = `${minutes}:${seconds}`;
         }, 1000);
     }
 
     function rejectFakeCall() {
+        const ringtone = document.getElementById("fake-ringtone");
+        if (ringtone && !ringtone.paused) {
+            ringtone.pause();
+            ringtone.currentTime = 0;
+        }
+        
         alert("Call Rejected!");
-        clearInterval(callTimerInterval); 
-        document.getElementById("fake-call-screen").style.display = "none"; 
+        clearInterval(callTimerInterval);
+        
+        const fakeCallScreen = document.getElementById("fake-call-screen");
+        fakeCallScreen.classList.remove("active"); // Smooth fade-out
     }
 
     document.getElementById("schedule-call").addEventListener("click", scheduleFakeCall);
@@ -76,16 +92,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const toggleButton = document.getElementById("dark-mode-toggle");
     const body = document.body;
 
+    // Load saved mode
     if (localStorage.getItem("darkMode") === "enabled") {
         body.classList.add("dark-mode");
     }
 
+    // Toggle mode
     toggleButton.addEventListener("click", function () {
         body.classList.toggle("dark-mode");
-        if (body.classList.contains("dark-mode")) {
-            localStorage.setItem("darkMode", "enabled");
-        } else {
-            localStorage.setItem("darkMode", "disabled");
-        }
+        localStorage.setItem("darkMode", body.classList.contains("dark-mode") ? "enabled" : "disabled");
     });
+
 });
