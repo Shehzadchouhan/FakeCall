@@ -1,69 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FakeCall - Excuse Incoming Call</title>
+    <title>Execuse Call</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <h1>FakeCall - Set Up Your Excuse Call</h1>
-    
-    <nav>
-        <ul>
-            <li type="none">
-                <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">🌙 Dark Mode</button>
-            </li>
-        </ul>
-    </nav>
+    <header id="header">
+        <h1>Execuse Call - help you to escape from discomfort</h1>
+    </header>
 
+    <div class="o">
+        <section id="profile">
+            <div class="NameandNum">
+                this is a block of name and number
+            </div>
+        </section>
 
-    <div class="container">
-        <div class="avatar">👤</div>
-        <h2>Call Assistant</h2>
-        <label type="text" placeholder="Name">
-        <label type="tel" placeholder="Phone Number">
-        <button class="button">Continue</button>
+        <section id="features">
+            <div>
+                for Features
+            </div>
+        </section>
+
+        <section id="button">
+            <a href="calling.html">
+                <button>call</button>
+            </a>
+        </section>
     </div>
-    <div class="nav">
-        <a href="#">📞 Call</a>
-        <a href="#">📅 Schedule</a>
-        <a href="#">⚙ Settings</a>
-    </div>
-
-    <div id="setup-container">
-     
-        <label for="caller-number">Caller Number:</label>
-        <input type="text" id="caller-number" placeholder="Enter phone number">
-
-        <label for="caller-image">Caller Image:</label>
-        <input type="file" id="caller-image" accept="image/*">
-        <img id="caller-image-preview" src="default-avatar.png" alt="Caller Image Preview" width="100">
-
-        <label for="ringtone">Ringtone:</label>
-        <input type="file" id="ringtone" accept="audio/*">
-
-        <label for="call-time">Call in (seconds):</label>
-        <input type="number" id="call-time" placeholder="Enter time..." min="1">
-
-        <button id="schedule-call">Schedule Call</button>
-    </div>
-
-    <!-- Fake Call Screen (Hidden by Default) -->
-    <div id="fake-call-screen" style="display: none;">
-        <img id="fake-caller-image" src="default-avatar.png" alt="Caller Image" width="100">
-        <h2 id="fake-caller-name">Unknown</h2> 
-        <p id="fake-caller-number">+0000000000</p> 
-
-        <div class="call-buttons">
-            <button id="accept-call" class="accept" aria-label="Accept Call">📞 Accept</button>
-            <button id="reject-call" class="decline" aria-label="Reject Call">❌ Reject</button>
+    <section id="navigation">
+        <div class="navbar">
+            <a href="#">Call</a>
+            <a href="#">History</a>
+            <a href="#">Settings</a>
         </div>
-    </div>
 
-    <audio id="fake-ringtone" preload="auto"></audio>
+        </div>
+    </section>
 
-    <script src="script.js"></script>
 </body>
+
 </html>
